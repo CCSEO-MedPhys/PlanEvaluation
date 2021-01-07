@@ -247,6 +247,8 @@ def select_save_file(default_directories: ET.Element, save_file=None)->Path:
         file_options=(('Excel Files', '*.xlsx'),),
         path_type='Save File'
         )
+    if new_save_file is None:
+        new_save_file = save_file
     return new_save_file
 
 

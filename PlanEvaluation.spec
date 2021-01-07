@@ -4,10 +4,10 @@ block_cipher = None
 
 
 a = Analysis(['PlanEvaluation.py'],
-             pathex=["\\\\dkphysicspv1\\e$\Gregs_Work\\Plan Checking\\PlanEvaluation"],
+             pathex=['\\\\dkphysicspv1\\e$\\Gregs_Work\\Plan Checking\\PlanEvaluation'],
              binaries=[],
              datas=[('.\\Data', 'Data'), ('.\\DVH Files', 'DVH Files'), ('.\\Icons', 'Icons'), ('.\\Output', 'Output'), ('PlanEvaluationConfig.xml', '.')],
-             hiddenimports=[],
+             hiddenimports=['tkinter', 'scipy.spatial.transform._rotation_groups'],
              hookspath=[],
              runtime_hooks=[],
              excludes=[],
@@ -26,7 +26,7 @@ exe = EXE(pyz,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
-          console=False , manifest="\\\\dkphysicspv1\\e$\\Gregs_Work\\Plan Checking\\PlanEvaluation\\PlanEvaluation.exe.manifest")
+          console=True )
 coll = COLLECT(exe,
                a.binaries,
                a.zipfiles,

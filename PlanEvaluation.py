@@ -125,23 +125,21 @@ def run_main_window(base_path, icons, config, config_file,
             # FIXME Account for cancel button
             elif event in 'Load Report Definition File':
                 report_file = select_report_file(default_directories)
-                report_dict = load_report_definitions(report_file,
-                                                      report_parameters)
-                report_definitions.update(report_dict)
-                report_list = make_report_selection_list(report_definitions)
-                window['report_selector'].update(values=report_list)
-                window.refresh()
+                if report_file is not None:
+                    report_dict = load_report_definitions(report_file,
+                                                          report_parameters)
+                    report_definitions.update(report_dict)
+                    report_list = make_report_selection_list(report_definitions)
+                    window['report_selector'].update(values=report_list)
+                    window.refresh()
             elif event in 'Update all Report Definitions':
                 report_definitions = update_report_definitions(config, base_path)
                 report_list = make_report_selection_list(report_definitions)
-                window['report_selector'].update(values=report_list)
+                window['report_selector'].update(values = report_list)
                 window.refresh()
             elif event in 'Set Save File Name':
                 save_file = select_save_file(default_directories, save_file)
-                if save_file is not None:
-                    if report:
-                        report.save_file = Path(save_file)
-                        update_report_header(window, report)
+
 
 def main():
     '''Define Folder Paths, load report and plan data.

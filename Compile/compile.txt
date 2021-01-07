@@ -1,5 +1,16 @@
-cd "C:\Users\Greg\OneDrive - Queen's University\Python\Projects\EclipseRelated\PlanEvaluation"
+Anaconda Powershell Prompt
 
-pyinstaller -makespec --nowindow --log-level=INFO --add-data=".\Data;Data" --add-data=".\DVH Files;DVH Files" --add-data=".\Icons;Icons" --add-data=".\Report Output;Report Output" --add-data="PlanEvaluationConfig.xml;." PlanEvaluation.py
+conda activate SABR_Install
+cd "\\dkphysicspv1\e$\Gregs_Work\Plan Checking\PlanEvaluation"
 
+pyinstaller --clean --noconfirm --onedir --hiddenimport=tkinter --hiddenimport=scipy.spatial.transform._rotation_groups --log-level=DEBUG --add-data=".\Data;Data" --add-data=".\DVH Files;DVH Files" --add-data=".\Icons;Icons" --add-data=".\Output;Output" --add-data="PlanEvaluationConfig.xml;." PlanEvaluation.py
+
+
+
+
+pyinstaller --clean --noconfirm --nowindow --hiddenimport=tkinter --log-level=INFO --add-data=".\Data;Data" --add-data=".\DVH Files;DVH Files" --add-data=".\Icons;Icons" --add-data=".\Output;Output" --add-data="PlanEvaluationConfig.xml;." PlanEvaluation.py
+
+edit spec file:
+	console=False
+	manifest='\\\\dkphysicspv1\\e$\Gregs_Work\\Plan Checking\\PlanEvaluation\\build\\PlanEvaluation\\PlanEvaluation.exe.manifest'
 pyinstaller --noconfirm PlanEvaluation.spec
