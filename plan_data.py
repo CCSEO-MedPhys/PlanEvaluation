@@ -1060,7 +1060,7 @@ class Plan():
                 default dose units.
         '''
         dose = self.get_data_element(data_type='Plan Property',
-                                        element_name='Prescribed dose')
+                                        element_name='Total dose')
         dose_value = dose.element_value
         desired_units = self.default_units['DoseUnit']
         if dose.unit != desired_units:
@@ -1112,14 +1112,19 @@ def dvh_info(dvh_file: Path)->PlanDescription:
     except (EOFError, OSError, TypeError) as err:
         raise NotDVH from err
     else:
+        pln_nm = header.get('Plan')
+        if pln_nm:
+            plan_name = pln_nm.element_value
+        else:
+            plan_name = header['Plan sum'].element_value
         plan_info = PlanDescription(
             plan_file=dvh_file,
             file_type='DVH',
             patient_name = header['Patient Name'].element_value,
             patient_id = header['Patient ID'].element_value,
-            plan_name = header['Plan'].element_value,
+            plan_name = plan_name,
             course = header['Course'].element_value,
-            dose = header['Prescribed dose'].element_value,
+            dose = header['Total dose'].element_value,
             export_date = header['Date'].element_value
             )
     finally:

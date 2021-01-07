@@ -67,7 +67,7 @@
       <Source>DVH File</Source>
     </PlanProperty>
     <PlanProperty>
-      <Name>Prescribed dose</Name>
+      <Name>Total dose</Name>
       <Source>DVH File</Source>
     </PlanProperty>
     <PlanProperty>

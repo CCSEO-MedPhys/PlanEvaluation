@@ -102,16 +102,42 @@ def update_plan_header(window: sg.Window, desc: PlanDescription):
     window['dose_text'].update(value=dose_text)
     window['pt_name_text'].update(value=desc.patient_name)
     window['id_text'].update(value=id_text)
+    window.refresh()
 
 
-def plan_selector(plan_dict: OrderedDict):
-    '''Plan Selection GUI
+def plan_tree_data(plan_dict: OrderedDict)->sg.TreeData():
+    '''Load tree with plan data.
     '''
     if plan_dict:
         patients = {plan.name_str() for plan in plan_dict.values()}
         patient_list = sorted(patients)
     else:
         patient_list = None
+    treedata = sg.TreeData()
+    if patient_list:
+        for patient in patient_list:
+            treedata.Insert('', patient, patient, [])
+        for plan_info, plan in plan_dict.items():
+            patient = plan.name_str()
+            treedata.Insert(patient, plan_info, plan.plan_name, plan)
+    return treedata
+
+
+def update_plan_tree_data(window: sg.Window, plan_dict: OrderedDict):
+    '''Update the Plan Selector tree with plan data.
+    Arguments:
+        desc {PlanDescription} -- Summary data for the plan.
+        window {} -- The GUI window containing the text.
+    '''
+    treedata = plan_tree_data(plan_dict)
+    window['Plan_tree'].update(treedata)
+    window.refresh()
+
+
+def plan_selector(plan_dict: OrderedDict):
+    '''Plan Selection GUI
+    '''
+    treedata = plan_tree_data(plan_dict)
     column_settings = [
         ('File', False, 30),
         ('Type', False, 6),
@@ -138,13 +164,6 @@ def plan_selector(plan_dict: OrderedDict):
                          show_expanded=True,
                          select_mode='browse',
                          enable_events=True)
-    treedata = sg.TreeData()
-    if patient_list:
-        for patient in patient_list:
-            treedata.Insert('', patient, patient, [])
-        for plan_info, plan in plan_dict.items():
-            patient = plan.name_str()
-            treedata.Insert(patient, plan_info, plan.plan_name, plan)
     return sg.Tree(data=treedata, **tree_settings)
 
 

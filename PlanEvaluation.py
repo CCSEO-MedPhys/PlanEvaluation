@@ -27,7 +27,7 @@ from plan_data import get_laterality_exceptions, find_plan_files, dvh_info
 from match_window import manual_match
 from update_reports import update_report_definitions
 from main_window import create_main_window, update_plan_header
-from main_window import make_report_selection_list
+from main_window import make_report_selection_list, update_plan_tree_data
 from main_window import action_settings_config, update_report_header
 from update_directories import change_default_locations, select_plan_file
 from update_directories import select_report_file, select_save_file
@@ -38,7 +38,7 @@ ConversionParameters = Dict[str, Union[str, float, None]]
 
 
 
-#%% LOad Data and Run Main Window
+#%% Load Data and Run Main Window
 def run_main_window(base_path, icons, config, config_file,
                     plan_dict, plan_parameters,
                     report_definitions, report_parameters):
@@ -49,6 +49,9 @@ def run_main_window(base_path, icons, config, config_file,
         window = create_main_window(plan_dict, report_definitions)
         action_settings = action_settings_config()
         action_settings.set_status(window, 'Nothing Selected')
+
+        default_directories = config.find(r'./DefaultDirectories')
+        save_file = Path(default_directories.findtext('Save'))
 
         while True:
             event, values = window.Read(timeout=2000)
@@ -91,9 +94,8 @@ def run_main_window(base_path, icons, config, config_file,
                 action_settings.set_status(window, 'Matched')
             elif event in 'generate_report':
                 action_settings.set_status(window, 'Generating')
-                default_directories = config.find(r'./DefaultDirectories')
-                save_file = Path(default_directories.findtext('Save'))
-                #save_file = select_save_file(default_directories)
+                if not save_file:
+                    save_file = save_file = select_save_file(default_directories)
                 run_report(active_plan, report, save_file)
                 action_settings.set_status(window, 'Generated')
             elif event in 'update_report_definitions':
@@ -102,22 +104,26 @@ def run_main_window(base_path, icons, config, config_file,
                 window['report_selector'].update(values=report_list)
                 window.refresh()
             elif event in 'Set Default Locations':
-                default_directories = config.find(r'./DefaultDirectories')
                 new_defaults = change_default_locations(default_directories)
                 if new_defaults is not None:
                     default_directories = new_defaults
                     save_config(config, base_path, config_file)
+                    plan_dict = find_plan_files(config)
+                    update_plan_tree_data(window, plan_dict)
             elif event in 'Select Plan DVH File':
                 plan_file = select_plan_file(config)
-                try:
-                    plan_info = dvh_info(plan_file)
-                except NotDVH:
-                    sg.PopupError(f'{plan_file.name} is not a valid DVH file')
-                else:
-                    update_plan_header(window, plan_info)
+                if plan_file:
+                    action_settings.set_status(window, 'Plan Loading')
+                    try:
+                        selected_plan_desc = dvh_info(plan_file)
+                    except NotDVH:
+                        sg.PopupError(f'{plan_file.name} is not a valid DVH file')
+                        action_settings.set_status(window, 'Invalid Plan')
+                    else:
+                        update_plan_header(window, selected_plan_desc)
+                        action_settings.set_status(window, 'Plan Selected')
             # FIXME Account for cancel button
             elif event in 'Load Report Definition File':
-                default_directories = config.find(r'./DefaultDirectories')
                 report_file = select_report_file(default_directories)
                 report_dict = load_report_definitions(report_file,
                                                       report_parameters)
@@ -131,8 +137,7 @@ def run_main_window(base_path, icons, config, config_file,
                 window['report_selector'].update(values=report_list)
                 window.refresh()
             elif event in 'Set Save File Name':
-                default_directories = config.find(r'./DefaultDirectories')
-                save_file = select_save_file(default_directories)
+                save_file = select_save_file(default_directories, save_file)
                 if save_file is not None:
                     if report:
                         report.save_file = Path(save_file)

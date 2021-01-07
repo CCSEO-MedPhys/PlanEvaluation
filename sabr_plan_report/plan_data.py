@@ -945,7 +945,7 @@ class Plan():
                 default dose units.
         '''
         dose = self.get_data_element(data_type='Plan Property',
-                                     element_name='Prescribed dose')
+                                     element_name='Total dose')
         dose_value = dose.element_value
         desired_units = self.default_units['DoseUnit']
         if dose.unit != desired_units:

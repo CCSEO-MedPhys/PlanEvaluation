@@ -116,7 +116,7 @@
         <Label>Prescription Dose (cGy):</Label>
         <PlanReference>
           <Type>Plan Property</Type>
-          <Name>Prescribed dose</Name>
+          <Name>Total dose</Name>
         </PlanReference>
         <Target>
           <Unit>cGy</Unit>
@@ -799,7 +799,7 @@
         <Label>Prescription Dose (cGy):</Label>
         <PlanReference>
           <Type>Plan Property</Type>
-          <Name>Prescribed dose</Name>
+          <Name>Total dose</Name>
         </PlanReference>
         <Target>
           <Unit>cGy</Unit>
@@ -1375,7 +1375,7 @@
         <Label>Prescription Dose (cGy):</Label>
         <PlanReference>
           <Type>Plan Property</Type>
-          <Name>Prescribed dose</Name>
+          <Name>Total dose</Name>
         </PlanReference>
         <Target>
           <Unit>cGy</Unit>

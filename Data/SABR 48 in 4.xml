@@ -120,7 +120,7 @@ Last modified Sept 12 2019-->
         <Label>Prescription Dose (cGy):</Label>
         <PlanReference>
           <Type>Plan Property</Type>
-          <Name>Prescribed dose</Name>
+          <Name>Total dose</Name>
         </PlanReference>
         <Target>
           <Unit>cGy</Unit>

@@ -132,7 +132,11 @@ def update_match(event: str, selection: str, tree: sg.Tree,
         else:
             item_name = event
             status = 'Manual'
-        new_value = ReferenceGroup(*old_value[0:-2], status, item_name)
+        try:
+            item = float(item_name)
+        except ValueError:
+            item = item_name
+        new_value = ReferenceGroup(*old_value[0:-2], status, item)
         history.add(old_value, new_value)
         tree.update_value(new_value)
     return history

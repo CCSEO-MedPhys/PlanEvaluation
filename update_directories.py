@@ -132,11 +132,11 @@ def file_selection_window(header='Select a File:',
                           path_type: str = 'Load File')->Path:
     '''Generate the window used to select directories.
     Keyword Arguments:
-        header {str} -- Test at the top of the window. 
+        header {str} -- Test at the top of the window.
             default: {'Select a File:'}
         title {str} -- Window title (default: {'Select a File'})
         current_path {Path} -- Starting path and file (default: {Path.cwd()})
-        file_options {tuple} -- File types available for selection 
+        file_options {tuple} -- File types available for selection
             default: {(('All Files', '*.*'),)}
     Returns:
         Path -- The selected file, or None if a file is not selected.
@@ -224,7 +224,7 @@ def select_report_file(default_directories: ET.Element)->Path:
     return report_file
 
 
-def select_save_file(default_directories: ET.Element)->Path:
+def select_save_file(default_directories: ET.Element, save_file=None)->Path:
     '''
     Select the name of the file to save the completed report in.
     Arguments:
@@ -233,10 +233,11 @@ def select_save_file(default_directories: ET.Element)->Path:
         Path -- The path to the selected file, or None if a file is not
         selected.
     '''
-    save_file = default_directories.findtext('Save')
     # Set the initial directory and file
     if save_file is None:
-        starting_dir = Path.cwd()
+        save_file = default_directories.findtext('Save')
+        if save_file is None:
+            starting_dir = Path.cwd()
     else:
         starting_dir = Path(save_file)
     new_save_file = file_selection_window(
@@ -294,7 +295,11 @@ def path_selection_frame(default_directories: ET.Element,
     if default_path is None:
         button_style['initial_folder'] = Path.cwd()
     else:
-        button_style['initial_folder'] = Path(default_path)
+        full_path = Path(default_path)
+        if full_path.is_dir():
+            button_style['initial_folder'] = full_path
+        else:
+            button_style['initial_folder'] = full_path.parent
     # Set the path type
     if path_param.path_type in 'Directory':
         button_style['button_type'] = sg.BUTTON_TYPE_BROWSE_FOLDER
@@ -330,23 +335,37 @@ def path_selection_window(default_directories: ET.Element,
 
 def change_default_locations(default_directories: ET.Element)->ET.Element:
     locations = [
-        DfltPath('DVH', 'Directory', 'dvh_dir', 'DVH File Location'),
-        DfltPath('DVH_File', 'Load File', 'dvh_file',
-                 'Default Plan DVH file.', (
-                     ('DVH Files', '*.dvh'),
-                     ('All Files', '*.*'),
-                     ("Text Files", "*.txt")
-                     )),
-        DfltPath('ReportPickleFile', 'Load File', 'report_file',
-                 'Report Definition file.', (
-                     ('Pickle Files', '*.pkl'),
-                     ('All Files', '*.*')
-                     )),
-        DfltPath('Save', 'Directory', 'Save File',
-                 'Location to save Completed Reports', (
-                     ('Excel Files', '*.xlsx'),
-                     ('All Files', '*.*')
-                     ))
+        DfltPath(
+            xml_element='DVH',
+            path_type='Directory',
+            widget_name='dvh_dir',
+            frame_title='DVH File Location'
+            ),
+        DfltPath(
+            xml_element='DVH_File',
+            path_type='Load File',
+            widget_name='dvh_file',
+            frame_title='Default Plan DVH file.',
+            file_types=(('DVH Files', '*.dvh'),
+                        ('All Files', '*.*'),
+                        ("Text Files", "*.txt"))
+            ),
+        DfltPath(
+            xml_element='ReportPickleFile',
+            path_type='Load File',
+            widget_name='report_file',
+            frame_title='Report Definition file.',
+            file_types=(('Pickle Files', '*.pkl'),
+                        ('All Files', '*.*'))
+            ),
+        DfltPath(
+            xml_element='Save',
+            path_type='Directory',
+            widget_name='Save File',
+            frame_title='Location to save Completed Reports',
+            file_types=(('Excel Files', '*.xlsx'),
+                        ('All Files', '*.*'))
+            )
         ]
     window = path_selection_window(default_directories, locations)
     done=False
@@ -361,11 +380,12 @@ def change_default_locations(default_directories: ET.Element)->ET.Element:
             done = True
             for path_param in locations:
                 #FIXME change "path_param.xml_element" to an XPath search from the top:
-                # // Selects all subelements, on all levels beneath the current element. 
+                # // Selects all sub-elements, on all levels beneath the current element.
                 # For example, .//egg selects all egg elements in the entire tree.
-                path_element = default_directories.find(path_param.xml_element) 
+                path_element = default_directories.find(path_param.xml_element)
                 new_default = values[path_param.widget_name]
-                path_element.text = new_default
+                if new_default:
+                    path_element.text = new_default
     window.close()
     return default_directories
 
@@ -387,7 +407,7 @@ def main():
     base_path = Path.cwd()
 
     # %% Load Config file
-    config_file = 'PlanEvaluationConfig.xml'
+    config_file = 'TestConfig.xml'
     config = load_config(base_path, config_file)
     test_config_file = 'TestConfig.xml'
     default_directories = config.find(r'./DefaultDirectories')
@@ -484,7 +504,7 @@ def main():
             save_file = select_save_file(default_directories)
             if save_file is not None:
                 if report:
-                    report.save_file = Path(save_file)    
+                    report.save_file = Path(save_file)
                     update_report_header(window, report)
 
 

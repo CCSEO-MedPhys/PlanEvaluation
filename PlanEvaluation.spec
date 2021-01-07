@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['PlanEvaluation.py'],
-             pathex=["C:\\Users\\gsalomon\\OneDrive - Queen's University\\Python\\Projects\\EclipseRelated\\PlanEvaluation"],
+             pathex=["\\\\dkphysicspv1\\e$\Gregs_Work\\Plan Checking\\PlanEvaluation"],
              binaries=[],
              datas=[('.\\Data', 'Data'), ('.\\DVH Files', 'DVH Files'), ('.\\Icons', 'Icons'), ('.\\Output', 'Output'), ('PlanEvaluationConfig.xml', '.')],
              hiddenimports=[],
@@ -26,7 +26,7 @@ exe = EXE(pyz,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
-          console=False , manifest="C:\\Users\\gsalomon\\OneDrive - Queen's University\\Python\\Projects\\EclipseRelated\\PlanEvaluation\\build\\PlanEvaluation\\PlanEvaluation.exe.manifest")
+          console=False , manifest="\\\\dkphysicspv1\\e$\\Gregs_Work\\Plan Checking\\PlanEvaluation\\PlanEvaluation.exe.manifest")
 coll = COLLECT(exe,
                a.binaries,
                a.zipfiles,

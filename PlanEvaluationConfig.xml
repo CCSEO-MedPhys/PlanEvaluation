@@ -1,13 +1,13 @@
-﻿<PlanEvaluationConfig>
+<PlanEvaluationConfig>
   <DefaultDirectories>
-    <DVH>.\DVH Files</DVH>
+    <DVH>L:/temp/Plan Checking Temp/Edwards 0683815 LUNL-sup &amp; LUNL-inf</DVH>
     <DVH_File />
     <ReportDefinitions>
       <Directory>.\Data</Directory>
     </ReportDefinitions>
     <ReportTemplates>.\Data</ReportTemplates>
     <ReportPickleFile>.\Data\Reports.pkl</ReportPickleFile>
-    <Save>.\Output\SABR Report.xlsx</Save>
+    <Save>L:/temp/Plan Checking Temp</Save>
   </DefaultDirectories>
   <LateralityCodeExceptions>
     <BodyRegion Name="ABLB">lower abdomen</BodyRegion>
