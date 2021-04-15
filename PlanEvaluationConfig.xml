@@ -1,13 +1,13 @@
 <PlanEvaluationConfig>
   <DefaultDirectories>
-    <DVH>.\DVH Files</DVH>
+    <DVH>M:\Dosimetry Planning Documents\SABR Plan Evaluation\DVH Files</DVH>
     <DVH_File />
     <ReportDefinitions>
       <Directory>.\Data</Directory>
     </ReportDefinitions>
     <ReportTemplates>.\Data</ReportTemplates>
     <ReportPickleFile>.\Data\Reports.pkl</ReportPickleFile>
-    <Save>.\Output</Save>
+    <Save>M:\Dosimetry Planning Documents\SABR Plan Evaluation\Reports/SABR Report.xlsx</Save>
   </DefaultDirectories>
   <LateralityCodeExceptions>
     <BodyRegion Name="ABLB">lower abdomen</BodyRegion>
