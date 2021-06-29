@@ -49,7 +49,7 @@ def get_report_references(template_reference_file: Path, sheet_name: str,
     report_book = xw.Book(template_reference_file)
     report_sheet = report_book.sheets[sheet_name]
     ref_range = report_sheet.range(table_top_cell).expand()
-    reference_data = ref_range.options(pd.DataFrame).value
+    reference_data = ref_range.options(pd.DataFrame,numbers=str).value
     reference_data.reset_index(inplace=True)
     reference_data.set_index('Name', inplace=True)
     return reference_data
