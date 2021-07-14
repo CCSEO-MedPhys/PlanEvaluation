@@ -31,7 +31,7 @@ def load_report(report_definition_file: Path)->ET.Element:
     report_def = report_root.find('Report')
     return report_def
 
-
+#%%
 def get_report_references(template_reference_file: Path, sheet_name: str,
                           table_top_cell: str = 'O3')-> pd.DataFrame:
     '''Load Report definitions from an Excel Test Template
@@ -54,7 +54,7 @@ def get_report_references(template_reference_file: Path, sheet_name: str,
     reference_data.set_index('Name', inplace=True)
     return reference_data
 
-
+#%%
 def update_report_definitions(report_definition_file: Path,
                               template_file: Path,
                               template_reference_file: Path,
@@ -144,7 +144,11 @@ def update_report_definitions(report_definition_file: Path,
 
         # Update the target definition parameters
         cell_address_elm.text = reference_data.at[report_item,'Address']
-        cell_format = reference_data.at[report_item,'Expected Format'].strip('"')
+        cell_format = reference_data.at[report_item,'Expected Format']
+        if cell_format:
+            cell_format = cell_format.strip('"')
+        else:
+            cell_format = ''
         cell_format_elm.text = cell_format
         if cell_unit_elm is not None:
             cell_units = reference_data.at[report_item,'Units']
@@ -365,18 +369,56 @@ def check_report_references(report_definition_file: Path,
 def main():
     base_dir = Path.cwd()
     data_dir = base_dir / 'Data'
-    template_file_name = 'SABR  Plan Evaluation Worksheet BLANK May 2021 For Testing.xlsx'
-    template_reference_file_name = 'SABR  Plan Evaluation Worksheet BLANK May 2021 For Testing.xlsx'
-    report_definition_file_name = '34 in 1.xml'
-    sheet_name = 'EvalutionSheet 34Gy 1F'
+    template_file_name = 'SABR  Plan Evaluation Worksheet BLANK May 2021 For Plan Evaluation.xlsx'
+    template_reference_file_name = 'SABR  Plan Evaluation Worksheet BLANK May 2021 For Plan Evaluation.xlsx'
 
+    # 34 in 1
+    report_definition_file_name = 'SABR 34 in 1.xml'
+    sheet_name = 'EvalutionSheet 34Gy 1F'
     template_file = data_dir / template_file_name
     template_reference_file = data_dir / template_reference_file_name
-    report_definition_file = data_dir / '34 in 1.xml'
+    report_definition_file = data_dir / report_definition_file_name
 
     update_report_definitions(report_definition_file, template_file,
                               template_reference_file, sheet_name)
     check_report_references(report_definition_file,
                             template_reference_file, sheet_name)
+    # 54 in 3
+    report_definition_file_name = 'SABR 54 in 3.xml'
+    sheet_name = 'EvalutionSheet 54Gy 3F'
+    template_file = data_dir / template_file_name
+    template_reference_file = data_dir / template_reference_file_name
+    report_definition_file = data_dir / report_definition_file_name
+
+    update_report_definitions(report_definition_file, template_file,
+                              template_reference_file, sheet_name)
+    check_report_references(report_definition_file,
+                            template_reference_file, sheet_name)
+
+    # 60 in 8
+    report_definition_file_name = 'SABR 60 in 8.xml'
+    sheet_name = 'Evalution Sheet 60Gy 8F'
+    template_file = data_dir / template_file_name
+    template_reference_file = data_dir / template_reference_file_name
+    report_definition_file = data_dir / report_definition_file_name
+
+    update_report_definitions(report_definition_file, template_file,
+                              template_reference_file, sheet_name)
+    check_report_references(report_definition_file,
+                            template_reference_file, sheet_name)
+
+
+    # 48 in 4
+    report_definition_file_name = 'SABR 48 in 4.xml'
+    sheet_name = 'EvalutionSheet 48Gy4F or 60Gy5F'
+    template_file = data_dir / template_file_name
+    template_reference_file = data_dir / template_reference_file_name
+    report_definition_file = data_dir / report_definition_file_name
+
+    update_report_definitions(report_definition_file, template_file,
+                              template_reference_file, sheet_name)
+    check_report_references(report_definition_file,
+                            template_reference_file, sheet_name)
+
 if __name__ == '__main__':
     main()

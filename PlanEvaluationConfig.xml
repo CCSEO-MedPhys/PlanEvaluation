@@ -1,13 +1,13 @@
 <PlanEvaluationConfig>
   <DefaultDirectories>
-    <DVH>M:\Dosimetry Planning Documents\SABR Plan Evaluation\DVH Files</DVH>
+    <DVH>L:\temp\Plan Checking Temp</DVH>
     <DVH_File />
     <ReportDefinitions>
       <Directory>.\Data</Directory>
     </ReportDefinitions>
     <ReportTemplates>.\Data</ReportTemplates>
     <ReportPickleFile>.\Data\Reports.pkl</ReportPickleFile>
-    <Save>M:\Dosimetry Planning Documents\SABR Plan Evaluation\Reports/SABR Report.xlsx</Save>
+    <Save>.\Data\SABR  Plan Evaluation Worksheet BLANK May 2021 For Plan Evaluation.xlsx</Save>
   </DefaultDirectories>
   <LateralityCodeExceptions>
     <BodyRegion Name="ABLB">lower abdomen</BodyRegion>
