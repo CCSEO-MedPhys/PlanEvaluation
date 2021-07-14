@@ -1,9 +1,12 @@
-Anaconda Powershell Prompt
+Anaconda Command Prompt
 
-conda activate SABR_Install
-cd "\\dkphysicspv1\e$\Gregs_Work\Plan Checking\PlanEvaluation"
+conda activate PlanEvaluationInstall
 
-pyinstaller --noconfirm --nowindow --hiddenimport=tkinter --hiddenimport=scipy.spatial.transform._rotation_groups --log-level=INFO --add-data=".\Data;Data" --add-data=".\DVH Files;DVH Files" --add-data=".\Icons;Icons" --add-data=".\Output;Output" --add-data="PlanEvaluationConfig.xml;." PlanEvaluation.py
+Net use I: “\\dkphysicspv1\e$\Gregs_Work\Plan Checking\PlanEvaluation” /persistent:no
+
+I:
+
+pyinstaller --clean --noconfirm --hiddenimport=tkinter --hiddenimport=scipy.spatial.transform._rotation_groups --log-level=WARN --add-data=".\Data;Data" --add-data=".\DVH Files;DVH Files" --add-data=".\Icons;Icons" --add-data=".\Output;Output" --add-data="PlanEvaluationConfig.xml;." --icon=".\Icons\Chart_Graph_Ascending.ico" PlanEvaluation.py
 
 
 
