@@ -6,7 +6,7 @@ Net use I: “\\dkphysicspv1\e$\Gregs_Work\Plan Checking\PlanEvaluation” /pers
 
 I:
 
-pyinstaller --clean --noconfirm --hiddenimport=tkinter --hiddenimport=scipy.spatial.transform._rotation_groups --log-level=WARN --add-data=".\Data;Data" --add-data=".\DVH Files;DVH Files" --add-data=".\Icons;Icons" --add-data=".\Output;Output" --add-data="PlanEvaluationConfig.xml;." --icon=".\Icons\Chart_Graph_Ascending.ico" PlanEvaluation.py
+pyinstaller --clean --noconfirm --nowindow --hiddenimport=tkinter --hiddenimport=scipy.spatial.transform._rotation_groups --log-level=WARN --add-data=".\Data;Data" --add-data=".\DVH Files;DVH Files" --add-data=".\Icons;Icons" --add-data=".\Output;Output" --add-data="PlanEvaluationConfig.xml;." --icon=".\Icons\Chart_Graph_Ascending.ico" PlanEvaluation.py
 
 
 
@@ -20,4 +20,47 @@ pyinstaller --noconfirm PlanEvaluation.spec
 
 
 FOR DEBUGGING
-pyinstaller --clean --noconfirm --onedir --hiddenimport=tkinter --hiddenimport=scipy.spatial.transform._rotation_groups --log-level=DEBUG --add-data=".\Data;Data" --add-data=".\DVH Files;DVH Files" --add-data=".\Icons;Icons" --add-data=".\Output;Output" --add-data="PlanEvaluationConfig.xml;." PlanEvaluation.py
+pyinstaller --clean --noconfirm --nowindow --hiddenimport=tkinter --hiddenimport=scipy.spatial.transform._rotation_groups --log-level=DEBUG --add-data=".\Data;Data" --add-data=".\DVH Files;DVH Files" --add-data=".\Icons;Icons" --add-data=".\Output;Output" --add-data="PlanEvaluationConfig.xml;." --icon=".\Icons\Chart_Graph_Ascending.ico" PlanEvaluation.py
+
+
+pythonw.exe PlanEvaluation.py
+
+%windir%\System32\cmd.exe "/K" C:\ProgramData\Anaconda3\Scripts\activate.bat C:\ProgramData\Anaconda3
+
+
+
+
+conda activate PlanEvaluation
+
+conda list --explicit > PlanEvaluation_spec-file.txt
+
+\\dkphysicspv1\Software\Anaconda\Miniconda3-latest-Windows-x86_64.exe /s /InstallationType=AllUsers /RegisterPython=1 /D=C:\ProgramData\Miniconda3
+
+%windir%\System32\cmd.exe "/K" C:\ProgramData\Miniconda3\Scripts\activate.bat C:\ProgramData\Miniconda3 && conda config --append channels conda-forge  && conda create --name PlanEvaluation --file "\\dkphysicspv1\Software\Anaconda\Spec Files\PlanEvaluation_spec-file.txt" && conda activate PlanEvaluation
+
+
+Miniconda3 py3B_4.9.2 (64-bit) Setup
+Usage: Miniconda3-latest-Windows-x86_64.exe [options]
+Options:
+InstallationType=AllUsers [default JustMe]
+/AddToPath=0I1] [default: 0]
+/Registe Python=[0|1] [default AllUsers: 1, JustMe: 0]
+/NoRegistry=[0|1] [default AllUsers: 0, JustMe: 0]
+/NoScripts=[0I1] [default: 0]
+Examples:
+Install for all users, but don't add to PATH env var:
+	Miniconda3-latest-Windows-x86_64.exe /InstallationType= AllUsers
+Install for just me, add to PATH and register as system Python:
+	Miniconda3-latest-Windows-x86_64.exe /RegisterPython= 1 /AddToPath= 1
+Install for just me, with no registry modification (for Cl):
+	Miniconda3-latest-Windows-x86_64.exe /NoRegistry= 1
+	
+	
+	
+start /wait "" Miniconda3-latest-Windows-x86_64.exe /S /InstallationType=AllUsers /RegisterPython=1 /D=C:\ProgramData\Miniconda3
+
+
+Add Data folder to zip file
+
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\ProgramData\\PlanEvaluation\\Data\\Reports.pkl'
+%windir%\System32\cmd.exe /K "C:\ProgramData\Anaconda3\Scripts\activate.bat C:\ProgramData\Anaconda3 && conda config --append channels conda-forge && conda create --name Standard --file "C:\Install Files\Anaconda Install Files\Standard_spec-file.txt" && conda activate standard"

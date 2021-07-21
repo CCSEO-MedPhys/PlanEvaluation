@@ -1,20 +1,29 @@
-﻿<!--Created with Liquid Studio 2019 (https://www.liquid-technologies.com)-->
 <ReportDefinitions>
     <Report>
-        <Name>SABR 60 in 8</Name>
-        <Description>SABR Plan Evaluation Sheet for 7.5Gy/fr Schedules: (60 Gy in 8F)
-Updated on 2021-07-14 10:30 from the Evalution Sheet 60Gy 8F WorkSheet in file SABR  Plan Evaluation Worksheet BLANK May 2021 For Plan Evaluation.xlsx
-Updated on 2021-07-14 10:32 from the Evalution Sheet 60Gy 8F WorkSheet in file SABR  Plan Evaluation Worksheet BLANK May 2021 For Plan Evaluation.xlsx
-Updated on 2021-07-14 10:57 from the Evalution Sheet 60Gy 8F WorkSheet in file SABR  Plan Evaluation Worksheet BLANK May 2021 For Plan Evaluation.xlsx</Description>
+        <Name>SABR 34 in 1</Name>
+        <Description>
+      SABR Plan Evaluation Sheet for 34Gy/fr Schedules: (34 Gy in 1F)
+Updated on 2021-06-29 13:19 from the EvalutionSheet 34Gy 1F WorkSheet in file SABR  Plan Evaluation Worksheet BLANK May 2021 For Testing.xlsx
+Updated on 2021-06-29 14:15 from the EvalutionSheet 34Gy 1F WorkSheet in file SABR  Plan Evaluation Worksheet BLANK May 2021 For Testing.xlsx
+Updated on 2021-06-29 14:18 from the EvalutionSheet 34Gy 1F WorkSheet in file SABR  Plan Evaluation Worksheet BLANK May 2021 For Testing.xlsx
+Updated on 2021-06-29 14:19 from the EvalutionSheet 34Gy 1F WorkSheet in file SABR  Plan Evaluation Worksheet BLANK May 2021 For Testing.xlsx
+Updated on 2021-07-14 09:25 from the EvalutionSheet 34Gy 1F WorkSheet in file SABR  Plan Evaluation Worksheet BLANK May 2021 For Plan Evaluation.xlsx
+Updated on 2021-07-14 09:54 from the EvalutionSheet 34Gy 1F WorkSheet in file SABR  Plan Evaluation Worksheet BLANK May 2021 For Plan Evaluation.xlsx
+Updated on 2021-07-14 09:54 from the EvalutionSheet 34Gy 1F WorkSheet in file SABR  Plan Evaluation Worksheet BLANK May 2021 For Plan Evaluation.xlsx
+Updated on 2021-07-14 09:56 from the EvalutionSheet 34Gy 1F WorkSheet in file SABR  Plan Evaluation Worksheet BLANK May 2021 For Plan Evaluation.xlsx
+Updated on 2021-07-14 10:02 from the EvalutionSheet 34Gy 1F WorkSheet in file SABR  Plan Evaluation Worksheet BLANK May 2021 For Plan Evaluation.xlsx
+Updated on 2021-07-14 10:19 from the EvalutionSheet 34Gy 1F WorkSheet in file SABR  Plan Evaluation Worksheet BLANK May 2021 For Plan Evaluation.xlsx
+Updated on 2021-07-14 10:27 from the EvalutionSheet 34Gy 1F WorkSheet in file SABR  Plan Evaluation Worksheet BLANK May 2021 For Plan Evaluation.xlsx
+Updated on 2021-07-14 10:57 from the EvalutionSheet 34Gy 1F WorkSheet in file SABR  Plan Evaluation Worksheet BLANK May 2021 For Plan Evaluation.xlsx</Description>
         <FilePaths>
             <Template>
                 <File>SABR  Plan Evaluation Worksheet BLANK May 2021 For Plan Evaluation.xlsx</File>
-                <WorkSheet>Evalution Sheet 60Gy 8F</WorkSheet>
+                <WorkSheet>EvalutionSheet 34Gy 1F</WorkSheet>
             </Template>
             <Save>
                 <Path>..\Output</Path>
                 <File>SABR Plan Evaluation Worksheet filled.xlsx</File>
-                <WorkSheet>Evaluation Sheet 60Gy 8F</WorkSheet>
+                <WorkSheet>Evaluation Sheet 34Gy 1F</WorkSheet>
             </Save>
         </FilePaths>
         <ReportItemList>
@@ -135,7 +144,7 @@ Updated on 2021-07-14 10:57 from the Evalution Sheet 60Gy 8F WorkSheet in file S
                 </PlanReference>
                 <Target>
                     <CellAddress>G4</CellAddress>
-                    <CellFormat>0.0</CellFormat>
+                    <CellFormat>0</CellFormat>
                 </Target>
             </ReportItem>
             <ReportItem name="Normalization">
@@ -252,7 +261,35 @@ Updated on 2021-07-14 10:57 from the Evalution Sheet 60Gy 8F WorkSheet in file S
                 <Target>
                     <Unit>%</Unit>
                     <CellAddress>F27</CellAddress>
-                    <CellFormat>0.0%</CellFormat>
+                    <CellFormat>0.00%</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="LungV700">
+                <Label>Lung-Basic Function</Label>
+                <Constructor>V 700 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Lung</Name>
+                    <Laterality>Both</Laterality>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F28</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="LungV740">
+                <Label>Lung-Pneumonitis</Label>
+                <Constructor>V 740 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Lung</Name>
+                    <Laterality>Both</Laterality>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F29</CellAddress>
+                    <CellFormat>0.00</CellFormat>
                 </Target>
             </ReportItem>
             <ReportItem name="AortaMaxDose">
@@ -265,21 +302,21 @@ Updated on 2021-07-14 10:57 from the Evalution Sheet 60Gy 8F WorkSheet in file S
                 </PlanReference>
                 <Target>
                     <Unit>cGy</Unit>
-                    <CellAddress>F28</CellAddress>
+                    <CellAddress>F30</CellAddress>
                     <CellFormat>0.0</CellFormat>
                 </Target>
             </ReportItem>
-            <ReportItem name="AortaV60">
-                <Label>Aorta V60Gy</Label>
-                <Constructor>V 6000 cGy</Constructor>
+            <ReportItem name="AortaV31">
+                <Label>Aorta V31Gy</Label>
+                <Constructor>V 3100 cGy</Constructor>
                 <PlanReference>
                     <Type>Structure</Type>
                     <Name>Aorta</Name>
                 </PlanReference>
                 <Target>
                     <Unit>cc</Unit>
-                    <CellAddress>F29</CellAddress>
-                    <CellFormat>0.0</CellFormat>
+                    <CellAddress>F31</CellAddress>
+                    <CellFormat>0.00</CellFormat>
                 </Target>
             </ReportItem>
             <ReportItem name="PulmonaryArteryMaxDose">
@@ -291,21 +328,21 @@ Updated on 2021-07-14 10:57 from the Evalution Sheet 60Gy 8F WorkSheet in file S
                 </PlanReference>
                 <Target>
                     <Unit>cGy</Unit>
-                    <CellAddress>F30</CellAddress>
+                    <CellAddress>F32</CellAddress>
                     <CellFormat>0.0</CellFormat>
                 </Target>
             </ReportItem>
-            <ReportItem name="PulmonaryArteryV60">
-                <Label>Artery-Pulmonary V60Gy</Label>
-                <Constructor>V 6000 cGy</Constructor>
+            <ReportItem name="PulmonaryArteryV31">
+                <Label>Artery-Pulmonary V31Gy</Label>
+                <Constructor>V 3100 cGy</Constructor>
                 <PlanReference>
                     <Type>Structure</Type>
                     <Name>PulmonaryArtery</Name>
                 </PlanReference>
                 <Target>
                     <Unit>cc</Unit>
-                    <CellAddress>F31</CellAddress>
-                    <CellFormat>0.0</CellFormat>
+                    <CellAddress>F33</CellAddress>
+                    <CellFormat>0.00</CellFormat>
                 </Target>
             </ReportItem>
             <ReportItem name="SpineMaxDose">
@@ -317,7 +354,46 @@ Updated on 2021-07-14 10:57 from the Evalution Sheet 60Gy 8F WorkSheet in file S
                 </PlanReference>
                 <Target>
                     <Unit>cGy</Unit>
-                    <CellAddress>F32</CellAddress>
+                    <CellAddress>F34</CellAddress>
+                    <CellFormat>0.0</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="SpineV10">
+                <Label>Spinal Canal V10Gy</Label>
+                <Constructor>V 1000 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Spinal Canal</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F35</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="SpineV7">
+                <Label>Spinal Canal V7Gy</Label>
+                <Constructor>V 700 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Spinal Canal</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F36</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="SpinePRV5MaxDose">
+                <Label>Spinal Canal-PRV 5mm Maximum Dose</Label>
+                <Constructor>Max Dose</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>PRV5 SpinalCanal</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cGy</Unit>
+                    <CellAddress>F37</CellAddress>
                     <CellFormat>0.0</CellFormat>
                 </Target>
             </ReportItem>
@@ -331,13 +407,13 @@ Updated on 2021-07-14 10:57 from the Evalution Sheet 60Gy 8F WorkSheet in file S
                 </PlanReference>
                 <Target>
                     <Unit>cGy</Unit>
-                    <CellAddress>F33</CellAddress>
+                    <CellAddress>F38</CellAddress>
                     <CellFormat>0.0</CellFormat>
                 </Target>
             </ReportItem>
-            <ReportItem name="IpsBrachPlexV30">
-                <Label>Ipsilat. Brach. Plex. V30Gy</Label>
-                <Constructor>V 3000 cGy</Constructor>
+            <ReportItem name="IpsBrachPlexV14">
+                <Label>Ipsilat. Brach. Plex. V14Gy</Label>
+                <Constructor>V 1400 cGy</Constructor>
                 <PlanReference>
                     <Type>Structure</Type>
                     <Name>Ipsilat. Brach. Plex.</Name>
@@ -345,8 +421,34 @@ Updated on 2021-07-14 10:57 from the Evalution Sheet 60Gy 8F WorkSheet in file S
                 </PlanReference>
                 <Target>
                     <Unit>cc</Unit>
-                    <CellAddress>F34</CellAddress>
-                    <CellFormat>0.0</CellFormat>
+                    <CellAddress>F39</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="SkinV26">
+                <Label>Skin V26Gy</Label>
+                <Constructor>V 2600 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Skin</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F40</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="SkinV23">
+                <Label>Skin V23Gy</Label>
+                <Constructor>V 2300 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Skin</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F41</CellAddress>
+                    <CellFormat>0.00</CellFormat>
                 </Target>
             </ReportItem>
             <ReportItem name="HeartMaxDose">
@@ -358,20 +460,7 @@ Updated on 2021-07-14 10:57 from the Evalution Sheet 60Gy 8F WorkSheet in file S
                 </PlanReference>
                 <Target>
                     <Unit>cGy</Unit>
-                    <CellAddress>F35</CellAddress>
-                    <CellFormat>0.0</CellFormat>
-                </Target>
-            </ReportItem>
-            <ReportItem name="HeartV60">
-                <Label>Heart V60Gy</Label>
-                <Constructor>V 6000 cGy</Constructor>
-                <PlanReference>
-                    <Type>Structure</Type>
-                    <Name>Heart</Name>
-                </PlanReference>
-                <Target>
-                    <Unit>cc</Unit>
-                    <CellAddress>F36</CellAddress>
+                    <CellAddress>F42</CellAddress>
                     <CellFormat>0.0</CellFormat>
                 </Target>
             </ReportItem>
@@ -384,8 +473,21 @@ Updated on 2021-07-14 10:57 from the Evalution Sheet 60Gy 8F WorkSheet in file S
                 </PlanReference>
                 <Target>
                     <Unit>cGy</Unit>
-                    <CellAddress>F37</CellAddress>
+                    <CellAddress>F43</CellAddress>
                     <CellFormat>0.0</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="EsoV1190">
+                <Label>Esophagus V11.9Gy</Label>
+                <Constructor>V 1190 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Esophagus</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F44</CellAddress>
+                    <CellFormat>0.00</CellFormat>
                 </Target>
             </ReportItem>
             <ReportItem name="ChestWallMaxDose">
@@ -397,21 +499,21 @@ Updated on 2021-07-14 10:57 from the Evalution Sheet 60Gy 8F WorkSheet in file S
                 </PlanReference>
                 <Target>
                     <Unit>cGy</Unit>
-                    <CellAddress>F38</CellAddress>
+                    <CellAddress>F45</CellAddress>
                     <CellFormat>0.0</CellFormat>
                 </Target>
             </ReportItem>
-            <ReportItem name="ChestWallV50">
-                <Label>Chestwall (rib) V50Gy</Label>
-                <Constructor>V 5000 cGy</Constructor>
+            <ReportItem name="ChestWallV22">
+                <Label>Chestwall (rib) V22Gy</Label>
+                <Constructor>V 2200 cGy</Constructor>
                 <PlanReference>
                     <Type>Structure</Type>
                     <Name>Chest Wall</Name>
                 </PlanReference>
                 <Target>
                     <Unit>cc</Unit>
-                    <CellAddress>F39</CellAddress>
-                    <CellFormat>0.0</CellFormat>
+                    <CellAddress>F46</CellAddress>
+                    <CellFormat>0.00</CellFormat>
                 </Target>
             </ReportItem>
             <ReportItem name="ProxTrachMaxDose">
@@ -424,7 +526,7 @@ Updated on 2021-07-14 10:57 from the Evalution Sheet 60Gy 8F WorkSheet in file S
                 </PlanReference>
                 <Target>
                     <Unit>cGy</Unit>
-                    <CellAddress>F40</CellAddress>
+                    <CellAddress>F47</CellAddress>
                     <CellFormat>0.0</CellFormat>
                 </Target>
             </ReportItem>
@@ -438,13 +540,13 @@ Updated on 2021-07-14 10:57 from the Evalution Sheet 60Gy 8F WorkSheet in file S
                 </PlanReference>
                 <Target>
                     <Unit>cGy</Unit>
-                    <CellAddress>F41</CellAddress>
+                    <CellAddress>F48</CellAddress>
                     <CellFormat>0.0</CellFormat>
                 </Target>
             </ReportItem>
-            <ReportItem name="ProxTrachV60">
-                <Label>Proximal Trachea V60Gy</Label>
-                <Constructor>V 6000 cGy</Constructor>
+            <ReportItem name="ProxTrachV1050">
+                <Label>Proximal Trachea V10.5Gy</Label>
+                <Constructor>V 1050 cGy</Constructor>
                 <PlanReference>
                     <Type>Structure</Type>
                     <Name>Trachea</Name>
@@ -452,13 +554,13 @@ Updated on 2021-07-14 10:57 from the Evalution Sheet 60Gy 8F WorkSheet in file S
                 </PlanReference>
                 <Target>
                     <Unit>cc</Unit>
-                    <CellAddress>B42</CellAddress>
+                    <CellAddress>B49</CellAddress>
                     <CellFormat>0.00</CellFormat>
                 </Target>
             </ReportItem>
-            <ReportItem name="ProxBronchV60">
-                <Label>Proximal Bronchial Tree V60Gy</Label>
-                <Constructor>V 6000 cGy</Constructor>
+            <ReportItem name="ProxBronchV1050">
+                <Label>Proximal Bronchial Tree V10.5Gy</Label>
+                <Constructor>V 1050 cGy</Constructor>
                 <PlanReference>
                     <Type>Structure</Type>
                     <Name>Prox Bronch Zone</Name>
@@ -466,7 +568,7 @@ Updated on 2021-07-14 10:57 from the Evalution Sheet 60Gy 8F WorkSheet in file S
                 </PlanReference>
                 <Target>
                     <Unit>cc</Unit>
-                    <CellAddress>C42</CellAddress>
+                    <CellAddress>C49</CellAddress>
                     <CellFormat>0.00</CellFormat>
                 </Target>
             </ReportItem>
@@ -479,21 +581,21 @@ Updated on 2021-07-14 10:57 from the Evalution Sheet 60Gy 8F WorkSheet in file S
                 </PlanReference>
                 <Target>
                     <Unit>cGy</Unit>
-                    <CellAddress>F43</CellAddress>
+                    <CellAddress>F50</CellAddress>
                     <CellFormat>0.0</CellFormat>
                 </Target>
             </ReportItem>
-            <ReportItem name="StomachV36">
-                <Label>Stomach and Intestines V36Gy</Label>
-                <Constructor>V 3600 cGy</Constructor>
+            <ReportItem name="StomachV1120">
+                <Label>Stomach and Intestines V11.2Gy</Label>
+                <Constructor>V 1120 cGy</Constructor>
                 <PlanReference>
                     <Type>Structure</Type>
                     <Name>Stomach</Name>
                 </PlanReference>
                 <Target>
                     <Unit>cc</Unit>
-                    <CellAddress>F44</CellAddress>
-                    <CellFormat>0.0</CellFormat>
+                    <CellAddress>F51</CellAddress>
+                    <CellFormat>0.00</CellFormat>
                 </Target>
             </ReportItem>
         </ReportItemList>
