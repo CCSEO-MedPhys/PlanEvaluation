@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """
+Build and check report definition xml files from spreadsheet templates.
 Created on Fri Jun 25 09:55:41 2021
 
 @author: gsalomon
