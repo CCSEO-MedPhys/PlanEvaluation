@@ -4,5 +4,52 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"python.defaultInterpreterPath": "C:/ProgramData/Anaconda3/envs/PlanEvaluation/python.exe",
+		"terminal.integrated.env.windows": {
+			"cwd": "${workspaceFolder}",
+			"PYTHONPATH": "${fileDirname};${workspaceFolder};${env:PYTHONPATH}"
+		},
+		"terminal.integrated.cwd": "${workspaceFolder}",
+		"terminal.integrated.profiles.windows": {
+			"Conda": {
+			  "path": "C:/WINDOWS/System32/cmd.exe",
+			  "args": ["/K", "C:/ProgramData/Anaconda3/Scripts/activate.bat C:/ProgramData/Anaconda3"],
+			  "icon": "terminal-bash",
+			  "color": "terminal.ansiCyan",
+			  "env": {"PYTHONPATH": "PYTHONPATH": "${fileDirname};${workspaceFolder};${env:PYTHONPATH}"
+			  }
+			},
+			"CondaPS": {
+				"source": "PowerShell",
+				"args": ["-ExecutionPolicy", "ByPass", "-NoExit", "-Command", "& 'C:/ProgramData/Anaconda3/shell/condabin/conda-hook.ps1' ; conda activate 'C:/ProgramData/Anaconda3'"],
+				"icon": "terminal-powershell",
+				"color": "terminal.ansiCyan",
+			  	"env": {"PYTHONPATH": "PYTHONPATH": "${fileDirname};${workspaceFolder};${env:PYTHONPATH}"
+				}
+			},
+			"PythonShell": {
+				"path": "C:/ProgramData/Anaconda3/envs/plan_check_tools/python.exe",
+				"args": [],
+				"icon": "terminal-bash",
+				"color": "terminal.ansiCyan",
+				"env": {"PYTHONPATH": "PYTHONPATH": "${fileDirname};${workspaceFolder};${env:PYTHONPATH}"
+				}
+			},
+		},
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Python: Current File",
+				"type": "python",
+				"request": "launch",
+				"program": "${file}",
+				"console": "integratedTerminal",
+				"justMyCode": true,
+				"cwd": "${workspaceFolder}",
+				}
+		]
+	},
 }
