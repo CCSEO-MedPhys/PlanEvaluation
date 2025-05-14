@@ -1,0 +1,614 @@
+﻿<!--Created with Liquid Studio 2019 (https://www.liquid-technologies.com)-->
+<ReportDefinitions>
+    <Report>
+        <Name>SABR 48 in 4</Name>
+        <Description>SABR Plan Evaluation Sheet for 12Gy/fr Schedules (48 Gy in 4F) or (60Gy/5F)
+Updated on 2021-07-14 10:33 from the EvalutionSheet 48Gy4F or 60Gy5F WorkSheet in file SABR  Plan Evaluation Worksheet BLANK May 2021 For Plan Evaluation.xlsx
+Updated on 2021-07-14 10:34 from the EvalutionSheet 48Gy4F or 60Gy5F WorkSheet in file SABR  Plan Evaluation Worksheet BLANK May 2021 For Plan Evaluation.xlsx
+Updated on 2021-07-14 10:57 from the EvalutionSheet 48Gy4F or 60Gy5F WorkSheet in file SABR  Plan Evaluation Worksheet BLANK May 2021 For Plan Evaluation.xlsx</Description>
+        <FilePaths>
+            <Template>
+                <File>SABR  Plan Evaluation Worksheet BLANK May 2021 For Plan Evaluation.xlsx</File>
+                <WorkSheet>EvalutionSheet 48Gy4F or 60Gy5F</WorkSheet>
+            </Template>
+            <Save>
+                <Path>..\Output</Path>
+                <File>SABR Plan Evaluation Worksheet filled.xlsx</File>
+                <WorkSheet>SABR 48 in 4</WorkSheet>
+            </Save>
+        </FilePaths>
+        <ReportItemList>
+            <ReportItem name="Patient">
+                <Label>Patient:</Label>
+                <PlanReference>
+                    <Type>Plan Property</Type>
+                    <Name>Patient Name</Name>
+                </PlanReference>
+                <Target>
+                    <CellAddress>C3</CellAddress>
+                    <CellFormat>@</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="PatientID">
+                <Label>CR#:</Label>
+                <PlanReference>
+                    <Type>Plan Property</Type>
+                    <Name>Patient ID</Name>
+                </PlanReference>
+                <Target>
+                    <CellAddress>C4</CellAddress>
+                    <CellFormat>@</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="Site">
+                <Label>Site:</Label>
+                <PlanReference>
+                    <Type>Plan Property</Type>
+                    <Name>Body Region</Name>
+                </PlanReference>
+                <Target>
+                    <CellAddress>K3</CellAddress>
+                    <CellFormat>@</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="PlanName">
+                <Label>Plan Name:</Label>
+                <PlanReference>
+                    <Type>Plan Property</Type>
+                    <Name>Plan</Name>
+                </PlanReference>
+                <Target>
+                    <CellAddress>K4</CellAddress>
+                    <CellFormat>@</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="Dose">
+                <Label>Prescription Dose (cGy):</Label>
+                <PlanReference>
+                    <Type>Plan Property</Type>
+                    <Name>Total dose</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cGy</Unit>
+                    <CellAddress>G3</CellAddress>
+                    <CellFormat>0.0</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="Fractions">
+                <Label>Fractions:</Label>
+                <PlanReference>
+                    <Type>Plan Property</Type>
+                    <Name>Fractions:</Name>
+                </PlanReference>
+                <Target>
+                    <CellAddress>G4</CellAddress>
+                    <CellFormat>0.0</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="GTV_Volume">
+                <Label>GTV Volume (cc)</Label>
+                <Constructor>Volume</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>IGTV</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F6</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="ITV_Volume">
+                <Label>ITV Volume (cc):</Label>
+                <Constructor>Volume</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>ITV</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F7</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="PTV_Volume">
+                <Label>PTV Volume (cc)</Label>
+                <Constructor>Volume</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>PTV</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F8</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="TotalLungVolume">
+                <Label>Total Lung Volume (cc)</Label>
+                <Constructor>Volume</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Lung</Name>
+                    <Laterality>Both</Laterality>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F9</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="Normalization">
+                <Label>Plan Normalization Value (%)</Label>
+                <PlanReference>
+                    <Type>Plan Property</Type>
+                    <Name>Plan Normalization Value (%)</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>%</Unit>
+                    <CellAddress>F13</CellAddress>
+                    <CellFormat>0.0%</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="PTV_Max">
+                <Label>PTV- Maximum Dose (%)</Label>
+                <Constructor>Max Dose</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>PTV</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>%</Unit>
+                    <CellAddress>F18</CellAddress>
+                    <CellFormat>0.00%</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="PTV_V100">
+                <Label>PTV - V100(%)</Label>
+                <Constructor>V 4800 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>PTV</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>%</Unit>
+                    <CellAddress>F16</CellAddress>
+                    <CellFormat>0.0%</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="PTV_V90">
+                <Label>PTV - V90 (%)</Label>
+                <Constructor>V 4320 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>PTV</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>%</Unit>
+                    <CellAddress>F17</CellAddress>
+                    <CellFormat>0.0%</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="HighDoseSpillage">
+                <Label>HIGH Dose Spillage Location</Label>
+                <Constructor>Volume</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Dose105[%]-PTV</Name>
+                    <Aliases Join="Add">
+                        <Alias>D105%-PTV</Alias>
+                        <Alias>105-PTV</Alias>
+                        <Alias>Dose 105%-PTV</Alias>
+                    </Aliases>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F20</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="HighDoseSpillageVolume">
+                <Label>HIGH Dose Spillage Volume</Label>
+                <Constructor>Volume</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Dose 100[%]</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F21</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="LowDoseSpillage">
+                <Label>LOW Dose Spillage Location</Label>
+                <Constructor>Max Dose</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Body-PTV+20</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>%</Unit>
+                    <CellAddress>F23</CellAddress>
+                    <CellFormat>0.0%</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="LowDoseSpillageVolume">
+                <Label>LOW Dose Spillage Volume</Label>
+                <Constructor>Volume</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Dose 50[%]</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F24</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="LungV20">
+                <Label>Total Lung V20</Label>
+                <Constructor>V 2000 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Lung</Name>
+                    <Laterality>Both</Laterality>
+                </PlanReference>
+                <Target>
+                    <Unit>%</Unit>
+                    <CellAddress>F27</CellAddress>
+                    <CellFormat>0.0%</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="LungV1160">
+                <Label>Lung-Basic Function</Label>
+                <Constructor>V 1160 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Lung</Name>
+                    <Laterality>Both</Laterality>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F28</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="LungV1240">
+                <Label>Lung-Pneumonitis</Label>
+                <Constructor>V 1240 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Lung</Name>
+                    <Laterality>Both</Laterality>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F29</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="AortaMaxDose">
+                <Label>Aorta  Maximum Dose</Label>
+                <Constructor>Max Dose</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Aorta</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cGy</Unit>
+                    <CellAddress>F30</CellAddress>
+                    <CellFormat>0.0</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="AortaV40">
+                <Label>Aorta  V40Gy</Label>
+                <Constructor>V 4000 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Aorta</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F31</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="PulmonaryArteryMaxDose">
+                <Label>Artery-Pulmonary Maximum Dose</Label>
+                <Constructor>Max Dose</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>PulmonaryArtery</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cGy</Unit>
+                    <CellAddress>F32</CellAddress>
+                    <CellFormat>0.0</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="PulmonaryArteryV40">
+                <Label>Artery-Pulmonary V40Gy</Label>
+                <Constructor>V 4000 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>PulmonaryArtery</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F33</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="SpineMaxDose">
+                <Label>Spinal Canal Maximum Dose</Label>
+                <Constructor>Max Dose</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Spinal Canal</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cGy</Unit>
+                    <CellAddress>F34</CellAddress>
+                    <CellFormat>0.0</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="SpineV2080">
+                <Label>Spinal Canal V20.8Gy</Label>
+                <Constructor>V 2080 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Spinal Canal</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F35</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="SpineV1360">
+                <Label>Spinal Canal V13.6Gy</Label>
+                <Constructor>V 1360 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Spinal Canal</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F36</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="SpinePRV5MaxDose">
+                <Label>Spinal Canal-PRV 5mm Maximum Dose</Label>
+                <Constructor>Max Dose</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>PRV5 SpinalCanal</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cGy</Unit>
+                    <CellAddress>F37</CellAddress>
+                    <CellFormat>0.0</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="IpsBrachPlexMaxDose">
+                <Label>Ipsilat. Brach. Plex. Maximum Dose</Label>
+                <Constructor>Max Dose</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Ipsilat. Brach. Plex.</Name>
+                    <Laterality>Ipsilateral</Laterality>
+                    <Aliases Join="Add">
+                        <Alias Size="1">BrachialPlexus {LatIndicator}</Alias>
+                    </Aliases>
+                </PlanReference>
+                <Target>
+                    <Unit>cGy</Unit>
+                    <CellAddress>F38</CellAddress>
+                    <CellFormat>0.0</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="IpsBrachPlexV2360">
+                <Label>Ipsilat. Brach. Plex. V23.6Gy</Label>
+                <Constructor>V 2360 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Ipsilat. Brach. Plex.</Name>
+                    <Laterality>Ipsilateral</Laterality>
+                    <Aliases Join="Add">
+                        <Alias Size="2">BrachialPlexus {LatIndicator}</Alias>
+                    </Aliases>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F39</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="SkinV30">
+                <Label>Skin V30Gy</Label>
+                <Constructor>V 3000 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Skin</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F40</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="HeartMaxDose">
+                <Label>Heart Maximum Dose</Label>
+                <Constructor>Max Dose</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Heart</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cGy</Unit>
+                    <CellAddress>F41</CellAddress>
+                    <CellFormat>0.0</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="HeartV28">
+                <Label>Heart V28Gy</Label>
+                <Constructor>V 2800 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Heart</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F42</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="EsoMaxDose">
+                <Label>Esophagus Maximum Dose</Label>
+                <Constructor>Max Dose</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Esophagus</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cGy</Unit>
+                    <CellAddress>F43</CellAddress>
+                    <CellFormat>0.0</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="EsoV1880">
+                <Label>Esophagus V18.8Gy</Label>
+                <Constructor>V 1880 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Esophagus</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F44</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="ChestWallMaxDose">
+                <Label>Chestwall (rib) Maximum Dose</Label>
+                <Constructor>Max Dose</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Chest Wall</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cGy</Unit>
+                    <CellAddress>F45</CellAddress>
+                    <CellFormat>0.0</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="ChestWallV40">
+                <Label>Chestwall (rib) V40Gy</Label>
+                <Constructor>V 4000 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Chest Wall</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F46</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="ChestWallV30">
+                <Label>Chestwall (rib) V30Gy</Label>
+                <Constructor>V 3000 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Chest Wall</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F47</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="ProxTrachMaxDose">
+                <Label>Proximal Trachea Maximum Dose</Label>
+                <Constructor>Max Dose</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Trachea</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cGy</Unit>
+                    <CellAddress>F48</CellAddress>
+                    <CellFormat>0.0</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="ProxBronchMaxDose">
+                <Label>Proximal Bronchial Tree Maximum Dose</Label>
+                <Constructor>Max Dose</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>BronchialTree</Name>
+                    <Laterality>Ipsilateral</Laterality>
+                </PlanReference>
+                <Target>
+                    <Unit>cGy</Unit>
+                    <CellAddress>F49</CellAddress>
+                    <CellFormat>0.0</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="ProxTrachV1560">
+                <Label>Proximal Trachea V15.6Gy</Label>
+                <Constructor>V 1560 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Trachea</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>B50</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="ProxBronchV1560">
+                <Label>Proximal Bronchial Tree V15.6Gy</Label>
+                <Constructor>V 1560 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Prox Bronch Zone</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>C50</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="StomachMaxDose">
+                <Label>Stomach and Intestines Maximum Dose</Label>
+                <Constructor>Max Dose</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Stomach</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cGy</Unit>
+                    <CellAddress>F51</CellAddress>
+                    <CellFormat>0.0</CellFormat>
+                </Target>
+            </ReportItem>
+            <ReportItem name="StomachV21">
+                <Label>Stomach and Intestines V21Gy</Label>
+                <Constructor>V 2100 cGy</Constructor>
+                <PlanReference>
+                    <Type>Structure</Type>
+                    <Name>Stomach</Name>
+                </PlanReference>
+                <Target>
+                    <Unit>cc</Unit>
+                    <CellAddress>F52</CellAddress>
+                    <CellFormat>0.00</CellFormat>
+                </Target>
+            </ReportItem>
+        </ReportItemList>
+    </Report>
+</ReportDefinitions>

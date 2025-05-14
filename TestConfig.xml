@@ -1,13 +1,13 @@
 <PlanEvaluationConfig>
   <DefaultDirectories>
-    <DVH>C:\Plan Checking Temp</DVH>
-    <DVH_File />
+    <DVH>C:/temp</DVH>
+    <DVH_File>L:/temp/Plan Checking Temp/Test docs/PlanCheck Plan Sum.dvh</DVH_File>
     <ReportDefinitions>
       <Directory>.\Data</Directory>
     </ReportDefinitions>
     <ReportTemplates>.\Data</ReportTemplates>
-    <ReportPickleFile>.\Data\Reports.pkl</ReportPickleFile>
-    <Save>C:/Plan Checking Temp\SABR Plan Evaluation Worksheet.xlsx</Save>
+    <ReportPickleFile>//dkphysicspv1/e$/Gregs_Work/Plan Checking/PlanEvaluation/Data/Reports.pkl</ReportPickleFile>
+    <Save>L:/temp/Plan Checking Temp</Save>
   </DefaultDirectories>
   <LateralityCodeExceptions>
     <BodyRegion Name="ABLB">lower abdomen</BodyRegion>
