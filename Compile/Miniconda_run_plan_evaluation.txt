@@ -1,2 +1,0 @@
-%windir%\System32\cmd.exe "/K" C:\ProgramData\Miniconda3\Scripts\activate.bat C:\ProgramData\Miniconda3 && conda activate PlanEvaluation && && cd "M:\Dosimetry Planning Documents\PlanEvaluation" && pythonw.exe PlanEvaluation.py
-
