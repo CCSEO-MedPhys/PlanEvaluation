@@ -1,0 +1,38 @@
+Label	Value	Cell	Name	Address	Extracted Format	Expected Format	Units	Address Check	Format Check	Unit Check	Name	Address	Format	Extracted Format	Units	Label	Reference	Type	Laterality	Constructor
+Patient:	0	$C$3	Patient	C3	General	@		TRUE	Check	TRUE	Patient	C3	@	@		Patient:	Patient Name	Plan Property		
+CR#:	0	$C$4	PatientID	C4	General	@		TRUE	Check	TRUE	PatientID	C4	@	@		PatientID	Patient ID	Plan Property		
+Site:	0	$K$3	Site	K3	General	@		TRUE	Check	TRUE	Site	K3	@	@		Site:	Body Region	Plan Property		
+Plan Name:	0	$K$4	PlanName	K4	General	@		TRUE	Check	TRUE	PlanName	K4	@	@		Plan Name:	Plan	Plan Property		
+Prescription Dose (cGy):	0	$G$3	Dose	G3	0.0	0.0	cGy	TRUE	TRUE	TRUE	GTV_Volume	F6	0.00	0.00	cc	GTV Volume (cc)	IGTV	Structure		Volume
+Fractions:	0	$G$4	Fractions	G4	0	0		TRUE	TRUE	TRUE	ITV_Volume	F7	0.00	0.00	cc	ITV Volume (cc):	ITV	Structure		Volume
+GTV Volume (cc)	0	$F$6	GTV_Volume	F6	0.00	0.00	cc	TRUE	TRUE	TRUE	PTV_Volume	F8	0.00	0.00	cc	PTV Volume (cc)	PTV	Structure		Volume
+ITV Volume (cc):	0	$F$7	ITV_Volume	F7	0.00	0.00	cc	TRUE	TRUE	TRUE	TotalLungVolume	F9	0.00	0.00	cc	Total Lung Volume (cc)	Lung	Structure	Both	Volume
+PTV Volume (cc)	0	$F$8	PTV_Volume	F8	0.00	0.00	cc	TRUE	TRUE	TRUE	Dose	G3	0.0	0.0	cGy	Prescription Dose (cGy):	Total dose	Plan Property		
+Total Lung Volume (cc)	0	$F$9	TotalLungVolume	F9	0.00	0.00	cc	TRUE	TRUE	TRUE	Fractions	G4	0.0	0		Fractions:		Plan Property		
+Plan Normalization Value (%)	??	$F$13	Normalization	F13	0.0%	0.0%	%	TRUE	TRUE	TRUE	Normalization	F13	0.0%	0.0%	%	Plan Normalization Value (%)		Plan Property		
+PTV - V100(%)	??	$F$16	PTV_V100	F16	0.0%	0.0%	cc	TRUE	TRUE	Check	PTV_Max	F18	0.0%	0.0%	%	PTV Maximum Dose (%)	PTV	Structure		Max Dose
+PTV - V90 (%)	??	$F$17	PTV_V90	F17	0.0%	0.0%	cc	TRUE	TRUE	Check	PTV_V100	F16	0.0%	0.0%	cc	PTV - V100(%)	PTV	Structure		V 100 %
+PTV- Maximum Dose	??	$F$18	PTV_Max	F18	0.0%	0.0%	%	TRUE	TRUE	Check	PTV_V90	F17	0.0%	0.0%	cc	PTV - V90 (%)	PTV	Structure		V 90 %
+Location V105% - PTV (cc) =	??	$F$20	HighDoseSpillage	F20	0.00	0.00	cc	TRUE	TRUE	TRUE	HighDoseSpillage	F20	0.00	0.00	cc	HIGH Dose Spillage Location	Dose105[%]-PTV	Structure		Volume
+Volume V100% (cc) =	??	$F$21	HighDoseSpillageVolume	F21	0.00	0.00	cc	TRUE	TRUE	TRUE	HighDoseSpillageVolume	F21	0.00	0.00	cc	HIGH Dose Spillage Volume	Dose 100[%]	Structure		Volume
+Location D³2cm (%) =	??	$F$23	LowDoseSpillage	F23	0.0%	0.0%	%	TRUE	TRUE	TRUE	LowDoseSpillage	F23	0.0%	0.0%	%	LOW Dose Spillage Location	Body-PTV+20	Structure		Max Dose
+Volume V50% (cc) =	??	$F$24	LowDoseSpillageVolume	F24	0.00	0.00	cc	TRUE	TRUE	TRUE	LowDoseSpillageVolume	F24	0.00	0.00	cc	LOW Dose Spillage Volume	Dose 50[%]	Structure		Volume
+V20 (Total Lung)	??	$F$27	LungV20	F27	0.0%	0.0%	cc	TRUE	TRUE	Check	LungV20	F27	0.0%	0.0%	cc	Total Lung V20	Lung	Structure	Both	V 2000 cGy
+Aorta  (max point dose)	??	$F$28	AortaMaxDose	F28	0.0	0.0	cGy	TRUE	TRUE	Check	AortaMaxDose	F28	0.0	0.0	cGy	Aorta Maximum Dose	Aorta	Structure		Max Dose
+Aorta  V60Gy=	??	$F$29	AortaV60	F29	0.0	0.0	cc	TRUE	TRUE	Check	AortaV60	F29	0.0	0.0	cc	Aorta V60Gy	Aorta	Structure		V 6000 cGy
+Artery-Pulmonary (max point dose)	??	$F$30	PulmonaryArteryMaxDose	F30	0.0	0.0	cGy	TRUE	TRUE	Check	PulmonaryArteryMaxDose	F30	0.0	0.0	cGy	Artery-Pulmonary Maximum Dose	PulmonaryArtery	Structure		Max Dose
+Artery-Pulmonary V60Gy=	??	$F$31	PulmonaryArteryV60	F31	0.0	0.0	cc	TRUE	TRUE	Check	PulmonaryArteryV60	F31	0.0	0.0	cc	Artery-Pulmonary V60Gy	PulmonaryArtery	Structure		V 6000 cGy
+Spinal Canal (max point dose)	??	$F$32	SpineMaxDose	F32	0.0	0.0	cGy	TRUE	TRUE	Check	SpineMaxDose	F32	0.0	0.0	cGy	Spinal Canal Maximum Dose	Spinal Canal	Structure		Max Dose
+Ipsilat. Brach. Plex. (max point dose)	??	$F$33	IpsBrachPlexMaxDose	F33	0.0	0.0	cGy	TRUE	TRUE	Check	IpsBrachPlexMaxDose	F33	0.0	0.0	cGy	Ipsilat. Brach. Plex. Maximum Dose	Ipsilat. Brach. Plex.	Structure	Ipsilateral	Max Dose
+Ipsilat. Brach. Plex. V30Gy=	??	$F$34	IpsBrachPlexV30	F34	0.0	0.0	cc	TRUE	TRUE	Check	IpsBrachPlexV30	F34	0.0	0.0	cc	Ipsilat. Brach. Plex. V30Gy	Ipsilat. Brach. Plex.	Structure	Ipsilateral	V 3000 cGy
+Heart (max point dose)	??	$F$35	HeartMaxDose	F35	0.0	0.0	cGy	TRUE	TRUE	Check	HeartMaxDose	F35	0.0	0.0	cGy	Heart Maximum Dose	Heart	Structure		Max Dose
+Heart V60Gy=	??	$F$36	HeartV60	F36	0.0	0.0	cc	TRUE	TRUE	Check	HeartV60	F36	0.0	0.0	cc	Heart V60Gy	Heart	Structure		V 6000 cGy
+Esophagus (max point dose)	??	$F$37	EsoMaxDose	F37	0.0	0.0	cGy	TRUE	TRUE	Check	EsoMaxDose	F37	0.0	0.0	cGy	Esophagus Maximum Dose	Esophagus	Structure		Max Dose
+Chestwall (rib) (max point dose)	??	$F$38	ChestWallMaxDose	F38	0.0	0.0	cGy	TRUE	TRUE	Check	ChestWallMaxDose	F38	0.0	0.0	cGy	Chestwall (rib) Maximum Dose	Chest Wall	Structure		Max Dose
+Chestwall (rib) V50Gy=	??	$F$39	ChestWallV50	F39	0.0	0.0	cc	TRUE	TRUE	Check	ChestWallV50	F39	0.0	0.0	cc	Chestwall (rib) V50Gy	Chest Wall	Structure		V 5000 cGy
+Trachea (max point dose)	??	$F$40	ProxTrachMaxDose	F40	0.0	0.0	cGy	TRUE	TRUE	Check	ProxTrachMaxDose	F40	0.0	0.0	cGy	Proximal Trachea Maximum Dose	Trachea	Structure		Max Dose
+Bronchus (max point dose)	??	$F$41	ProxBronchMaxDose	F41	0.0	0.0	cGy	TRUE	TRUE	Check	ProxBronchMaxDose	F41	0.0	0.0	cGy	Proximal Bronchial Tree Maximum Dose	BronchialTree	Structure	Ipsilateral	Max Dose
+Trachea V60Gy =	0	$B$42	ProxTrachV60	B42	0.00	0.00	cc	TRUE	TRUE	Check	ProxTrachV60	B42	0.00	0.00	cc	Proximal Trachea V60Gy	Trachea	Structure		V 6000 cGy
+Bronchus V60Gy=	0	$C$42	ProxBronchV60	C42	0.00	0.00	cc	TRUE	TRUE	Check	ProxBronchV60	C42	0.00	0.00	cc	Proximal Bronchial Tree V60Gy	Prox Bronch Zone	Structure		V 6000 cGy
+Stomach and  Intestines (max point dose)	??	$F$43	StomachMaxDose	F43	0.0	0.0	cGy	TRUE	TRUE	Check	StomachMaxDose	F43	0.0	0.0	cGy	Stomach and Intestines Maximum Dose	Stomach	Structure		Max Dose
+Stomach and  Intestines V36Gy=	??	$F$44	StomachV36	F44	0.0	0.0	cc	TRUE	TRUE	Check	StomachV36	F44	0.0	0.0	cc	Stomach and Intestines V36Gy	Stomach	Structure		V 3600 cGy
