@@ -80,6 +80,7 @@
       <Laterality>Ipsilateral</Laterality>
       <Aliases>
         <Alias Size="1">BrachialPlexus {LatIndicator}</Alias>
+        <Alias Size="1">BrachialPlex_{LatIndicator}</Alias>
         <Alias>Br Plexus</Alias>
         <Alias Size="2">Brachial Plexus {LatIndicator}</Alias>
         <Alias>Ipsilat_Brach_Plex</Alias>
@@ -189,6 +190,8 @@
       <ReferenceName>Spinal Canal</ReferenceName>
       <Aliases>
         <Alias>Spinal_Canal</Alias>
+        <Alias>SpinalCord</Alias>
+        <Alias>SpinalCanal</Alias>
       </Aliases>
     </PlanElement>
     <PlanElement name="SpinePRV5">
@@ -196,6 +199,7 @@
       <ReferenceName>PRV5 SpinalCanal</ReferenceName>
       <Aliases>
         <Alias>prv SC 5mm</Alias>
+        <Alias>PRV5_SpinalCanal</Alias>
         <Alias>PRV 5mm</Alias>
         <Alias>PRVSC5mm</Alias>
       </Aliases>
@@ -213,7 +217,10 @@
       <Type>Structure</Type>
       <ReferenceName>PulmonaryArtery</ReferenceName>
       <Aliases>
+        <Alias>A_Pulmonary</Alias>
+        <Alias>PulmonaryA</Alias>
         <Alias>Pulmonary_Artery</Alias>
+        <Alias>PulmonaryArtery</Alias>
       </Aliases>
     </PlanElement>
     <PlanElement name="Chest Wall">
@@ -221,6 +228,8 @@
       <ReferenceName>Chest Wall</ReferenceName>
       <Aliases>
         <Alias>Chest_Wall</Alias>
+        <Alias>Chestwall</Alias>
+        <Alias>Chest Wall</Alias>
       </Aliases>
     </PlanElement>
   </AliasList>

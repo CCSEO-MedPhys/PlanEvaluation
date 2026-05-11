@@ -5,36 +5,33 @@
 		}
 	],
 	"settings": {
-		"python.defaultInterpreterPath": "C:/ProgramData/Anaconda3/envs/PlanEvaluation/python.exe",
+		"python.defaultInterpreterPath": "${workspaceFolder}/PlanEvaluationVenv/Scripts/python.exe",
 		"terminal.integrated.env.windows": {
 			"cwd": "${workspaceFolder}",
 			"PYTHONPATH": "${fileDirname};${workspaceFolder};${env:PYTHONPATH}"
 		},
 		"terminal.integrated.cwd": "${workspaceFolder}",
 		"terminal.integrated.profiles.windows": {
-			"Conda": {
+			"Cmd": {
 			  "path": "C:/WINDOWS/System32/cmd.exe",
-			  "args": ["/K", "C:/ProgramData/Anaconda3/Scripts/activate.bat C:/ProgramData/Anaconda3"],
+			  "args": ["/K", "${workspaceFolder}/PlanEvaluationVenv/Scripts/activate.bat"],
 			  "icon": "terminal-bash",
 			  "color": "terminal.ansiCyan",
-			  "env": {"PYTHONPATH": "PYTHONPATH": "${fileDirname};${workspaceFolder};${env:PYTHONPATH}"
-			  }
+			  "env": {"PYTHONPATH": "${fileDirname};${workspaceFolder};${env:PYTHONPATH}"}
 			},
-			"CondaPS": {
+			"PowerShell": {
 				"source": "PowerShell",
-				"args": ["-ExecutionPolicy", "ByPass", "-NoExit", "-Command", "& 'C:/ProgramData/Anaconda3/shell/condabin/conda-hook.ps1' ; conda activate 'C:/ProgramData/Anaconda3'"],
+				"args": ["-ExecutionPolicy", "ByPass", "-NoExit", "-Command", "& '${workspaceFolder}/PlanEvaluationVenv/Scripts/Activate.ps1'"],
 				"icon": "terminal-powershell",
 				"color": "terminal.ansiCyan",
-			  	"env": {"PYTHONPATH": "PYTHONPATH": "${fileDirname};${workspaceFolder};${env:PYTHONPATH}"
-				}
+			  	"env": {"PYTHONPATH": "${fileDirname};${workspaceFolder};${env:PYTHONPATH}"}
 			},
-			"PythonShell": {
-				"path": "C:/ProgramData/Anaconda3/envs/plan_check_tools/python.exe",
+			"Python": {
+				"path": "${workspaceFolder}/PlanEvaluationVenv/Scripts/python.exe",
 				"args": [],
 				"icon": "terminal-bash",
 				"color": "terminal.ansiCyan",
-				"env": {"PYTHONPATH": "PYTHONPATH": "${fileDirname};${workspaceFolder};${env:PYTHONPATH}"
-				}
+				"env": {"PYTHONPATH": "${fileDirname};${workspaceFolder};${env:PYTHONPATH}"}
 			},
 		},
 	},
@@ -43,7 +40,7 @@
 		"configurations": [
 			{
 				"name": "Python: Current File",
-				"type": "python",
+				"type": "debugpy",
 				"request": "launch",
 				"program": "${file}",
 				"console": "integratedTerminal",
