@@ -289,3 +289,4 @@ paket-files/
 /Environment/
 /VS Code.bat
 *.zip
+deploy/

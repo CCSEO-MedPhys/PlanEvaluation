@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PlanEvaluation User Manual</title>
+    <style>
+        :root {
+            --bg: #f5f7fa;
+            --panel: #ffffff;
+            --ink: #132238;
+            --muted: #4c5b70;
+            --line: #d7e0ea;
+            --accent: #0a7a6a;
+            --accent-soft: #e8f5f2;
+            --warn: #7a4b00;
+            --warn-soft: #fff2e1;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+            color: var(--ink);
+            background: linear-gradient(180deg, #eef3f8 0%, var(--bg) 220px);
+        }
+
+        .wrap {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        header {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 8px 18px rgba(20, 30, 45, 0.06);
+        }
+
+        h1 {
+            margin: 0 0 10px 0;
+            font-size: 1.9rem;
+        }
+
+        h2 {
+            margin-top: 28px;
+            margin-bottom: 10px;
+            font-size: 1.35rem;
+            border-left: 5px solid var(--accent);
+            padding-left: 10px;
+        }
+
+        h3 {
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        p,
+        li {
+            line-height: 1.5;
+        }
+
+        .panel {
+            margin-top: 18px;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 8px 18px rgba(20, 30, 45, 0.04);
+        }
+
+        .callout {
+            border-left: 5px solid var(--accent);
+            background: var(--accent-soft);
+            padding: 10px 12px;
+            margin: 12px 0;
+            border-radius: 8px;
+        }
+
+        .warning {
+            border-left: 5px solid var(--warn);
+            background: var(--warn-soft);
+            padding: 10px 12px;
+            margin: 12px 0;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+        }
+
+        th,
+        td {
+            border: 1px solid var(--line);
+            text-align: left;
+            padding: 8px;
+            vertical-align: top;
+        }
+
+        th {
+            background: #f0f5fb;
+        }
+
+        .small {
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        code {
+            background: #edf2f7;
+            border: 1px solid #d6e0ea;
+            border-radius: 4px;
+            padding: 1px 4px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 0.92em;
+        }
+
+        .step-shot {
+            width: fit-content;
+            max-width: 75%;
+            margin: 10px auto 14px auto;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 8px;
+            background: #fbfdff;
+        }
+
+        .step-shot img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            border: 1px solid #d8e2ee;
+            background: #ffffff;
+        }
+
+        .inline-icon {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+            vertical-align: middle;
+            margin-left: 8px;
+            border: 0;
+            background: transparent;
+        }
+
+        .step-shot figcaption {
+            margin-top: 6px;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .image-card {
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 8px;
+            background: #fbfdff;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            border: 1px solid #d8e2ee;
+            background: #ffffff;
+        }
+
+        .image-card figcaption {
+            margin-top: 6px;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 720px) {
+            .wrap {
+                padding: 12px;
+            }
+
+            header,
+            .panel {
+                padding: 14px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Auto Fill SABR Worksheet Version II</h1>
+            <p class="small">Version date: 2026-05-11</p>
+            <p>
+                PlanEvaluation reads an exported DVH file, matches plan elements to a selected SABR report definition,
+                and writes values into an Excel worksheet template for review and documentation.
+            </p>
+        </header>
+
+        <section class="panel">
+            <h2>1) Save the DVH Data</h2>
+            <ol>
+                <li>Open the DVH view in External Beam Planning.</li>
+                <li>In the "Dose Statistics" Tab Right-Click and select "Show DVH for all Structures".</li>
+                <figure class="step-shot">
+                    <img src="assets/screenshots/image1.png" alt="Show DVH for all structures menu" />
+                    <figcaption>Step illustration: Show DVH for all Structures</figcaption>
+                </figure>
+                <li>DVH values will be calculated.</li>
+                <li>Right-Click within the DVH and select "Absolute Dose".</li>
+                <li>Right-Click within the DVH and select "Export DVH in Tabular Format...".</li>
+                <li>A "Save As" dialogue box will appear.</li>
+                <li>Select the folder "M:\Dosimetry Planning Documents\SABR Plan Evaluation\DVH Files".</li>
+                <li>Set "Save as type" to "All Files".</li>
+                <li>Save with a file name ending in ".dvh".</li>
+                <figure class="step-shot">
+                    <img src="assets/screenshots/image2.png" alt="Save As dialog showing dvh export settings" />
+                    <figcaption>Step illustration: Save As dialog with All Files and .dvh filename</figcaption>
+                </figure>
+            </ol>
+            <div class="warning">
+                Confirm the selected DVH export is the current approved plan and fractionation before running the
+                report.
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>2) Run the Plan Evaluation program</h2>
+            <h3>Program name</h3>
+            <ul>
+                <li>PlanEvaluation <img class="inline-icon" src="assets/screenshots/image3.png"
+                        alt="PlanEvaluation program icon" /></li>
+            </ul>
+            <h3>Start method</h3>
+            <ul>
+                <li>Run PlanEvaluation.bat in the package root.</li>
+                <li>Run PlanEvaluation.py from the same folder with the configured Python environment.</li>
+            </ul>
+            <p class="small">
+                On startup, the app loads configuration from <code>PlanEvaluationConfig.xml</code>,
+                report definitions from <code>Data/Reports.pkl</code>, and available DVH plans from the configured DVH
+                folder.
+            </p>
+            <figure class="step-shot">
+                <img src="assets/screenshots/image4.png" alt="Main Plan Evaluation window on startup" />
+                <figcaption>Step illustration: The main window appears</figcaption>
+            </figure>
+        </section>
+
+        <section class="panel">
+            <h2>3) Main Window</h2>
+            <p>After starting "PlanEvaluation", the main window appears.</p>
+            <ol>
+                <li>Select the dvh file from the list in the bottom left of the window.
+                    (This list reflects dvh files in the configured DVH directory.)</li>
+                <li>To select a DVH file from a different folder, use <strong>File &gt; Select Plan DVH File</strong>.
+                    A dialog will appear — type or browse to the file path and click <strong>Ok</strong>.</li>
+                <figure class="step-shot">
+                    <img src="assets/screenshots/image18.png"
+                        alt="File menu with Select Plan DVH File highlighted and the Select DVH Plan File dialog" />
+                    <figcaption>Step illustration: File &gt; Select Plan DVH File opens the file selection dialog
+                    </figcaption>
+                </figure>
+                <li>Click Load Plan to import the dvh file data.</li>
+                <figure class="step-shot">
+                    <img src="assets/screenshots/image5.png" alt="Load Plan button highlighted after selecting plan" />
+                    <figcaption>Step illustration: Select plan and click Load Plan</figcaption>
+                </figure>
+                <li>The button label should change to Plan Loaded.</li>
+                <figure class="step-shot">
+                    <img src="assets/screenshots/image6.png" alt="Plan Loaded status in main window" />
+                    <figcaption>Step illustration: Plan Loaded</figcaption>
+                </figure>
+                <li>Select a report from the report drop-down list.</li>
+                <li>Click Match Structures to run automatic matching and review manual matching.</li>
+                <figure class="step-shot">
+                    <img src="assets/screenshots/image7.png" alt="Report selected and Match Structures button active" />
+                    <figcaption>Step illustration: Select report and click Match Structures</figcaption>
+                </figure>
+            </ol>
+        </section>
+        <section class="panel">
+            <h2>4) Matching Structures And Values</h2>
+            <p>
+                In the manual matching window, unmatched items can be manually mapped,
+                directly entered as values, or cleared.
+            </p>
+            <p>After clicking <strong>Match Structures</strong>, a new window will pop up allowing you to match the plan
+                report items with structure names.</p>
+            <figure class="step-shot">
+                <img src="assets/screenshots/image8.png" alt="Match Items window with matched group" />
+                <figcaption>Step illustration: Match window with grouped items</figcaption>
+            </figure>
+            <p>The items are grouped by whether the auto-match was successful or not.</p>
+            <p class="small">Matching tries these steps in order for each report reference:</p>
+            <ol class="small">
+                <li>Direct name match to plan element.</li>
+                <li>Laterality-based name variation (using config lookup tables).</li>
+                <li>Alias lookup from global alias list and per-report aliases.</li>
+            </ol>
+            <h3>Manual match actions</h3>
+            <ul>
+                <li>To manually match a structure to a given report item: right click on the desired item and hold the
+                    mouse over the Match heading on the menu that appears.</li>
+                <li>Click on the appropriate structure from the list.</li>
+                <figure class="step-shot">
+                    <img src="assets/screenshots/image9.png" alt="Right-click match menu with structure list" />
+                    <figcaption>Step illustration: Manual structure selection from Match menu</figcaption>
+                </figure>
+                <li>Selecting Enter Value from the right-click menu brings up a new window for typing in the text value.
+                </li>
+                <figure class="step-shot">
+                    <img src="assets/screenshots/image10.png" alt="Right-click menu showing Enter Value" />
+                    <figcaption>Step illustration: Choose Enter Value</figcaption>
+                </figure>
+                <figure class="step-shot">
+                    <img src="assets/screenshots/image11.png" alt="Enter a value popup dialog" />
+                    <figcaption>Step illustration: Enter a value dialog</figcaption>
+                </figure>
+                <li>The value entered will display in the Matched Item column.</li>
+                <figure class="step-shot">
+                    <img src="assets/screenshots/image12.png" alt="Matched item column updated with entered value" />
+                    <figcaption>Step illustration: Entered value appears in Matched Item</figcaption>
+                </figure>
+                <li>To remove a match, select Clear from the right-click menu.</li>
+                <figure class="step-shot">
+                    <img src="assets/screenshots/image13.png"
+                        alt="Right-click menu showing Clear option on matched item" />
+                    <figcaption>Step illustration: Clear a match</figcaption>
+                </figure>
+                <li>The value in the Matched Item column will become None.</li>
+                <figure class="step-shot">
+                    <img src="assets/screenshots/image14.png" alt="Matched item changed to None after clear" />
+                    <figcaption>Step illustration: Cleared item becomes None</figcaption>
+                </figure>
+                <li>Once all desired modifications are complete, click on the Approve button in the lower left corner.
+                </li>
+            </ul>
+        </section>
+        <section class="panel">
+            <h2>5) Generate And Review Report</h2>
+            <ol>
+                <li>Click Generate Report.</li>
+                <figure class="step-shot">
+                    <img src="assets/screenshots/image15.png"
+                        alt="Main window after structured matched with Generate Report button" />
+                    <figcaption>Step illustration: Structured Matched state, ready to generate report</figcaption>
+                </figure>
+                <li>The SABR Plan Report Form will appear and begin to populate.</li>
+                <figure class="step-shot">
+                    <img src="assets/screenshots/image16.png" alt="Generated SABR worksheet in Excel" />
+                    <figcaption>Step illustration: Generated report worksheet</figcaption>
+                </figure>
+                <li>Review Results.</li>
+                <figure class="step-shot">
+                    <img src="assets/screenshots/image17.png"
+                        alt="Zoomed report cells for trachea and bronchus review" />
+                    <figcaption>Step illustration: Trachea/Bronchus review detail</figcaption>
+                </figure>
+                <p><strong>Note:</strong> values for both Trachea and Bronchus may appear, with the maximum used in the
+                    usual
+                    spot.</p>
+                <li>Clicking on any of the green buttons, or selecting a new dvh file or plan report,
+                    moves back to that step in the process.</li>
+            </ol>
+        </section>
+
+        <section class="panel">
+            <h2>6) Menus You Might Want to Use</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Menu Action</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Select Plan DVH File</td>
+                        <td>Open a specific DVH file directly when it does not appear in the list of available files.</td>
+                    </tr>
+                    <tr>
+                        <td>Set Save File Name</td>
+                        <td>Choose a folder and filename for the generated report.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>7) Menu Items You Should Not Use</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Menu Action</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Set Default Locations</td>
+                        <td>Change DVH folder, report folders, template and save locations in config.
+                            This will change the locations for all users and may cause issues if set
+                            incorrectly. Contact a physicist if you need changes to these.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Update all Report Definitions</td>
+                        <td>Rebuild report definition pickle from configured report folders.
+                            This is not needed for normal use and may cause issues if the
+                            report definitions are not correct.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Load Report Definition File</td>
+                        <td>Load an additional report definition XML file.
+                            This is primarily intended for physicists to test new report definition XML files.
+                            If a new report definition XML file is needed, contact a physicist to create and test it.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="panel">
+            <h2>8) Troubleshooting</h2>
+            <h3>Invalid Plan</h3>
+            <ul>
+                <li>Cause: selected file is not valid DVH format or cannot be parsed.</li>
+                <li>Action: verify extension and source export, then re-select file.</li>
+            </ul>
+
+            <h3>Missing Match Items</h3>
+            <ul>
+                <li>Cause: naming mismatch between DVH structures and report references.</li>
+                <li>Action: use manual matching, then update aliases for future automation.</li>
+            </ul>
+
+            <h3>Excel File Does Not Update</h3>
+            <ul>
+                <li>Cause: output file is locked or workbook path is incorrect.</li>
+                <li>Action: close conflicting workbook instances and verify save path.</li>
+            </ul>
+        </section>
+        <section class="panel">
+            <h2>9) Note</h2>
+            <p>This program is a work in progress.</p>
+            <p>Some things will not work as intended.</p>
+            <p>Your feedback, bug reports, and feature requests are very welcome.</p>
+        </section>
+
+        <section class="panel">
+            <h2>10) Clinical Use Caution</h2>
+            <div class="warning">
+                This tool supports plan evaluation workflow but does not replace independent clinical review.
+                Verify output values in the worksheet before charting or sign-off.
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
