@@ -14,7 +14,7 @@ from collections import OrderedDict
 from typing import Optional, Union, Any, Dict, Tuple, List, Set, NamedTuple, TypeVar, Generic
 
 import xlwings as xw
-import PySimpleGUI as sg
+import FreeSimpleGUI as sg
 
 from build_plan_report import load_config, update_reports, load_reports, run_report, load_dvh
 from build_plan_report import IconPaths
@@ -476,8 +476,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-
-

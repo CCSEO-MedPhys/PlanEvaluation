@@ -8,7 +8,7 @@ from copy import deepcopy
 from typing import Union, Dict, List
 from typing import Union, Dict, List
 
-import PySimpleGUI as sg
+import FreeSimpleGUI as sg
 
 from build_plan_report import load_config, load_reports
 

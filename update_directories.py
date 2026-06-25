@@ -7,7 +7,9 @@ from pathlib import Path
 from copy import deepcopy
 from typing import Tuple, List, NamedTuple
 import xml.etree.ElementTree as ET
-import PySimpleGUI as sg
+
+import FreeSimpleGUI as sg
+
 from build_plan_report import load_config, save_config, load_reports
 from build_plan_report import set_report_parameters
 from plan_data import NotDVH

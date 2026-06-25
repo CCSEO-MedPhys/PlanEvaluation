@@ -6,6 +6,7 @@ from typing import NamedTuple
 from pathlib import Path
 import logging
 import xml.etree.ElementTree as ET
+
 import xlwings as xw
 from plan_data import Plan, PlanDataItem, ConversionParameters, Structure
 

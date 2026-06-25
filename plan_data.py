@@ -15,6 +15,7 @@ from operator import attrgetter
 import xml.etree.ElementTree as ET
 import re
 import logging
+
 import numpy as np
 from scipy.interpolate import interp1d
 
@@ -1175,4 +1176,3 @@ def find_plan_files(config: ET.Element,
     else:
         plan_dict = None
     return plan_dict
-

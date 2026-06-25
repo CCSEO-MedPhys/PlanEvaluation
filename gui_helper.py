@@ -5,7 +5,7 @@ from abc import abstractproperty
 
 from typing import Union, Dict, Tuple, List, NamedTuple, TypeVar, Generic
 
-import PySimpleGUI as sg
+import FreeSimpleGUI as sg
 
 
 from plan_report import ReferenceGroup
@@ -251,7 +251,7 @@ class ButtonSettings(NamedTuple):
 
 
 class ElementConfig(dict):
-    def __init__(self, name: str, setting_type: Generic[Settings], 
+    def __init__(self, name: str, setting_type: Generic[Settings],
                  settings: SettingsList, **dict_items):
         self.name = name
         self.setting_type = setting_type
@@ -277,7 +277,7 @@ class WindowConfig():
         self.element_lookup = dict()
         self.load_configs(element_settings)
         self.status_groups = dict(**status_groups)
-        
+
     def add_config(self, setting: ElementConfig):
         self.element_lookup[setting.name] = setting
 

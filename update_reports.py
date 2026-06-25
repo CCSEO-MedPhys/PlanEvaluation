@@ -2,7 +2,9 @@
 from pathlib import Path
 from typing import Any, Dict, Tuple, List
 import xml.etree.ElementTree as ET
-import PySimpleGUI as sg
+
+import FreeSimpleGUI as sg
+
 from build_plan_report import load_config, update_reports
 
 '''
@@ -137,4 +139,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

@@ -7,8 +7,10 @@ from pathlib import Path
 from operator import attrgetter
 from copy import deepcopy
 from typing import Dict, Tuple, List
+
 import xml.etree.ElementTree as ET
-import PySimpleGUI as sg
+import FreeSimpleGUI as sg
+
 from build_plan_report import load_config, load_reports, IconPaths, load_dvh
 from plan_report import Report, ReferenceGroup, MatchHistory
 from plan_data import get_laterality_exceptions, find_plan_files
